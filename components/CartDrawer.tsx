@@ -99,12 +99,8 @@ const CartDrawer: React.FC = () => {
                         </div>
                       )}
 
-                      <div className="flex items-center justify-between">
-                        {/* Price - without currency display */}
-                        <span className="font-semibold text-gray-900">
-                          ${parseFloat(item.price.amount).toFixed(2)}
-                        </span>
-
+                      {/* Price and Remove Button - Price moved to the right */}
+                      <div className="flex items-center justify-between mb-3">
                         {/* Remove Button with "X" icon */}
                         <button
                           onClick={() => removeItem(item.variantId)}
@@ -112,6 +108,11 @@ const CartDrawer: React.FC = () => {
                         >
                           <i className="ri-close-line text-lg font-bold"></i>
                         </button>
+                        
+                        {/* Price - without currency display */}
+                        <span className="font-semibold text-gray-900">
+                          ${parseFloat(item.price.amount).toFixed(2)}
+                        </span>
                       </div>
 
                       {/* Quantity Controls - smaller size */}
