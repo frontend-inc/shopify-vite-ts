@@ -93,75 +93,65 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
   };
 
   return (
-    <Link to={`/products/${product.handle}`}>
-      <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group cursor-pointer">
-        {/* Product Image */}
-        <div className="aspect-square overflow-hidden bg-gray-100 relative">
-          {firstImage ? (
+    <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+      {/* Product Image */}
+      <div className="aspect-square overflow-hidden bg-gray-100 relative">
+        {firstImage ? (
+          <Link to={`/products/${product.handle}`}>
             <img
               src={firstImage.url}
               alt={firstImage.altText || product.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-gray-400">
-              <i className="ri-image-line text-6xl"></i>
-            </div>
-          )}
-          
-          {/* Discount Badge */}
-          {hasDiscount && compareAtPrice && (
-            <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">
-              {Math.round(((parseFloat(compareAtPrice.amount) - parseFloat(price.amount)) / parseFloat(compareAtPrice.amount)) * 100)}% OFF
-            </div>
-          )}
-        </div>
-
-        {/* Product Info */}
-        <div className="p-6">
-          <h3 
-            className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2 min-h-[3.5rem]" 
-            style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-          >
-            {product.title}
-          </h3>
-          
-          {product.description && (
-            <p className="text-gray-600 text-sm mb-4 line-clamp-3 min-h-[4.5rem]">
-              {product.description}
-            </p>
-          )}
-
-          {/* Price Section */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-gray-900">
-                {formatPrice(price)}
-              </span>
-              {hasDiscount && compareAtPrice && (
-                <span className="text-lg text-gray-500 line-through">
-                  {formatPrice(compareAtPrice)}
-                </span>
-              )}
-            </div>
+          </Link>
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-gray-400">
+            <i className="ri-image-line text-6xl"></i>
           </div>
-
-          {/* Add to Cart Button */}
-          <button
-            onClick={handleAddToCart}
-            disabled={!isAvailable}
-            className={`w-full py-3 px-4 rounded-lg font-semibold transition-all duration-200 ${
-              isAvailable
-                ? 'bg-black text-white hover:bg-gray-800 active:scale-95'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            }`}
-            style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-          >
-            {isAvailable ? 'Add to Cart' : 'Out of Stock'}
-          </button>
-        </div>
+        )}
+        
+        {/* Discount Badge */}
+        {hasDiscount && compareAtPrice && (
+          <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">
+            {Math.round(((parseFloat(compareAtPrice.amount) - parseFloat(price.amount)) / parseFloat(compareAtPrice.amount)) * 100)}% OFF
+          </div>
+        )}
       </div>
-    </Link>
+
+      {/* Product Info */}
+      <div className="p-6">
+        <h3 
+          className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2 min-h-[3.5rem]" 
+          style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+        >
+          {product.title}
+        </h3>
+        
+        {product.description && (
+          <p className="text-gray-600 text-sm mb-4 line-clamp-3 min-h-[4.5rem]">
+            {product.description}
+          </p>
+        )}
+
+        {/* Price Section */}
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <span className="text-lg font-bold text-gray-900">
+              ${parseFloat(price.amount).toFixed(2)}
+            </span>
+          </div>
+        </div>
+
+        {/* View Details Button */}
+        <Link
+          to={`/products/${product.handle}`}
+          className="w-full block py-3 px-4 rounded-lg font-semibold transition-all duration-200 bg-black text-white hover:bg-gray-800 active:scale-95 text-center"
+          style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+        >
+          View Details
+        </Link>
+      </div>
+    </div>
   );
 };
 
