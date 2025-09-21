@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { CartProvider, useCart } from './contexts/CartContext';
 import Home from '@/components/Home';
-import About from './components/About';
 import ProductDetail from './components/ProductDetail';
 import Collections from './components/Collections';
 import CollectionDetail from './components/CollectionDetail';
@@ -52,13 +51,6 @@ const Navigation: React.FC = () => {
             >
               Collections
             </Link>
-            <Link 
-              to="/about" 
-              className="text-black hover:text-gray-600 font-medium transition-colors"
-              style={{fontFamily: 'Space Grotesk, sans-serif'}}
-            >
-              About
-            </Link>
             
             {/* Cart Icon */}
             <CartIcon />
@@ -79,7 +71,6 @@ const AppContent: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/collections/:handle" element={<CollectionDetail />} />
-          <Route path="/about" element={<About />} />
           <Route path="/products/:handle" element={<ProductDetail />} />
         </Routes>
       </main>
@@ -102,9 +93,6 @@ const AppContent: React.FC = () => {
             </Link>
             <Link to="/collections" className="text-gray-400 hover:text-white transition-colors">
               Collections
-            </Link>
-            <Link to="/about" className="text-gray-400 hover:text-white transition-colors">
-              About
             </Link>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-gray-400">
