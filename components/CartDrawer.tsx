@@ -32,7 +32,7 @@ const CartDrawer: React.FC = () => {
       }`}>
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b">
+          <div className="flex items-center justify-between p-6 border-b border-gray-200">
             <h2 
               className="text-2xl font-bold"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
@@ -65,7 +65,7 @@ const CartDrawer: React.FC = () => {
             ) : (
               <div className="space-y-6">
                 {state.items.map((item) => (
-                  <div key={item.variantId} className="flex items-start space-x-4 pb-6 border-b last:border-b-0">
+                  <div key={item.variantId} className="flex items-start space-x-4 pb-6 border-b border-gray-200 last:border-b-0">
                     {/* Product Image */}
                     <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
                       {item.image ? (
@@ -144,7 +144,7 @@ const CartDrawer: React.FC = () => {
 
           {/* Footer - Checkout Section */}
           {state.items.length > 0 && (
-            <div className="border-t p-6">
+            <div className="border-t border-gray-200 p-6">
               {/* Subtotal - without currency display */}
               <div className="flex items-center justify-between mb-4">
                 <span className="text-lg font-semibold">Subtotal</span>
