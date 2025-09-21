@@ -22,7 +22,7 @@ const CartDrawer: React.FC = () => {
     <>
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300"
+        className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300"
         onClick={closeCart}
       />
 
@@ -100,36 +100,36 @@ const CartDrawer: React.FC = () => {
                       )}
 
                       <div className="flex items-center justify-between">
-                        {/* Price */}
+                        {/* Price - without currency display */}
                         <span className="font-semibold text-gray-900">
-                          {formatPrice(item.price.amount, item.price.currencyCode)}
+                          ${parseFloat(item.price.amount).toFixed(2)}
                         </span>
 
-                        {/* Remove Button */}
+                        {/* Remove Button with "X" icon */}
                         <button
                           onClick={() => removeItem(item.variantId)}
                           className="p-1 hover:bg-gray-100 rounded transition-colors text-gray-400 hover:text-red-500"
                         >
-                          <i className="ri-delete-bin-line"></i>
+                          <i className="ri-close-line text-lg font-bold"></i>
                         </button>
                       </div>
 
-                      {/* Quantity Controls */}
+                      {/* Quantity Controls - smaller size */}
                       <div className="flex items-center mt-3">
                         <div className="flex items-center border border-gray-300 rounded-lg">
                           <button
                             onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
-                            className="p-2 hover:bg-gray-100 transition-colors text-gray-500"
+                            className="p-1 hover:bg-gray-100 transition-colors text-gray-500"
                             disabled={item.quantity <= 1}
                           >
                             <i className="ri-subtract-line text-sm"></i>
                           </button>
-                          <span className="px-3 py-1 font-semibold min-w-[40px] text-center">
+                          <span className="px-2 py-1 font-semibold min-w-[30px] text-center text-sm">
                             {item.quantity}
                           </span>
                           <button
                             onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
-                            className="p-2 hover:bg-gray-100 transition-colors text-gray-500"
+                            className="p-1 hover:bg-gray-100 transition-colors text-gray-500"
                           >
                             <i className="ri-add-line text-sm"></i>
                           </button>
@@ -145,11 +145,11 @@ const CartDrawer: React.FC = () => {
           {/* Footer - Checkout Section */}
           {state.items.length > 0 && (
             <div className="border-t p-6">
-              {/* Subtotal */}
+              {/* Subtotal - without currency display */}
               <div className="flex items-center justify-between mb-4">
                 <span className="text-lg font-semibold">Subtotal</span>
                 <span className="text-2xl font-bold">
-                  {formatPrice(state.totalAmount.toString(), state.items[0]?.price.currencyCode || 'USD')}
+                  ${state.totalAmount.toFixed(2)}
                 </span>
               </div>
 
