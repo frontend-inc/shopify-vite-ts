@@ -4,9 +4,12 @@ export { shopifyFetch, SHOPIFY_STORE_DOMAIN, SHOPIFY_STOREFRONT_API_URL } from '
 // Product functions
 export { 
   getProducts, 
-  getProduct, 
+  getProduct,
+  getProductRecommendations,
   GET_PRODUCTS_QUERY, 
-  GET_PRODUCT_QUERY 
+  GET_PRODUCT_QUERY,
+  QUERY_PRODUCT_RECOMMENDATIONS,
+  ProductFragment
 } from '../../graphql/products.js';
 
 // Collection functions
