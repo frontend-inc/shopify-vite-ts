@@ -83,56 +83,61 @@ const CartDrawer: React.FC = () => {
 
                     {/* Product Details */}
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-gray-900 mb-1 line-clamp-2">
-                        {item.title}
-                      </h4>
-                      
-                      {/* Variant Info */}
-                      {item.variant.selectedOptions.length > 0 && (
-                        <div className="text-sm text-gray-500 mb-2">
-                          {item.variant.selectedOptions.map((option, index) => (
-                            <span key={option.name}>
-                              {option.value}
-                              {index < item.variant.selectedOptions.length - 1 ? ' / ' : ''}
-                            </span>
-                          ))}
+                      <div className="flex items-start justify-between">
+                        {/* Left side: Product info */}
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-gray-900 mb-1 line-clamp-2">
+                            {item.title}
+                          </h4>
+                          
+                          {/* Variant Info */}
+                          {item.variant.selectedOptions.length > 0 && (
+                            <div className="text-sm text-gray-500 mb-2">
+                              {item.variant.selectedOptions.map((option, index) => (
+                                <span key={option.name}>
+                                  {option.value}
+                                  {index < item.variant.selectedOptions.length - 1 ? ' / ' : ''}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Quantity Controls - smaller size */}
+                          <div className="flex items-center mt-3">
+                            <div className="flex items-center border border-gray-300 rounded-lg">
+                              <button
+                                onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
+                                className="p-1 hover:bg-gray-100 transition-colors text-gray-500"
+                                disabled={item.quantity <= 1}
+                              >
+                                <i className="ri-subtract-line text-sm"></i>
+                              </button>
+                              <span className="px-2 py-1 font-semibold min-w-[30px] text-center text-sm">
+                                {item.quantity}
+                              </span>
+                              <button
+                                onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
+                                className="p-1 hover:bg-gray-100 transition-colors text-gray-500"
+                              >
+                                <i className="ri-add-line text-sm"></i>
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                      )}
 
-                      {/* Price and Remove Button - "X" moved to far right and aligned center */}
-                      <div className="flex items-center justify-between mb-3">
-                        {/* Price - without currency display */}
-                        <span className="font-semibold text-gray-900">
-                          ${parseFloat(item.price.amount).toFixed(2)}
-                        </span>
-                        
-                        {/* Remove Button with "X" icon - moved to far right and aligned center */}
-                        <button
-                          onClick={() => removeItem(item.variantId)}
-                          className="p-1 hover:bg-gray-100 rounded transition-colors text-gray-400 hover:text-red-500 self-center"
-                        >
-                          <i className="ri-close-line text-lg font-bold"></i>
-                        </button>
-                      </div>
-
-                      {/* Quantity Controls - smaller size */}
-                      <div className="flex items-center mt-3">
-                        <div className="flex items-center border border-gray-300 rounded-lg">
-                          <button
-                            onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
-                            className="p-1 hover:bg-gray-100 transition-colors text-gray-500"
-                            disabled={item.quantity <= 1}
-                          >
-                            <i className="ri-subtract-line text-sm"></i>
-                          </button>
-                          <span className="px-2 py-1 font-semibold min-w-[30px] text-center text-sm">
-                            {item.quantity}
+                        {/* Right side: Price and Remove Button */}
+                        <div className="flex flex-col items-end space-y-2 ml-4">
+                          {/* Price - without currency display */}
+                          <span className="font-semibold text-gray-900">
+                            ${parseFloat(item.price.amount).toFixed(2)}
                           </span>
+                          
+                          {/* Remove Button with "X" icon */}
                           <button
-                            onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
-                            className="p-1 hover:bg-gray-100 transition-colors text-gray-500"
+                            onClick={() => removeItem(item.variantId)}
+                            className="p-1 hover:bg-gray-100 rounded transition-colors text-gray-400 hover:text-red-500"
                           >
-                            <i className="ri-add-line text-sm"></i>
+                            <i className="ri-close-line text-lg font-bold"></i>
                           </button>
                         </div>
                       </div>
