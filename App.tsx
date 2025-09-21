@@ -4,6 +4,8 @@ import { CartProvider, useCart } from './contexts/CartContext';
 import Home from '@/components/Home';
 import About from './components/About';
 import ProductDetail from './components/ProductDetail';
+import Collections from './components/Collections';
+import CollectionDetail from './components/CollectionDetail';
 import CartDrawer from './components/CartDrawer';
 
 const CartIcon: React.FC = () => {
@@ -44,6 +46,13 @@ const Navigation: React.FC = () => {
               Home
             </Link>
             <Link 
+              to="/collections" 
+              className="text-black hover:text-gray-600 font-medium transition-colors"
+              style={{fontFamily: 'Space Grotesk, sans-serif'}}
+            >
+              Collections
+            </Link>
+            <Link 
               to="/about" 
               className="text-black hover:text-gray-600 font-medium transition-colors"
               style={{fontFamily: 'Space Grotesk, sans-serif'}}
@@ -68,6 +77,8 @@ const AppContent: React.FC = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/collections" element={<Collections />} />
+          <Route path="/collections/:handle" element={<CollectionDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/products/:handle" element={<ProductDetail />} />
         </Routes>
@@ -88,6 +99,9 @@ const AppContent: React.FC = () => {
           <div className="flex justify-center space-x-6">
             <Link to="/" className="text-gray-400 hover:text-white transition-colors">
               Home
+            </Link>
+            <Link to="/collections" className="text-gray-400 hover:text-white transition-colors">
+              Collections
             </Link>
             <Link to="/about" className="text-gray-400 hover:text-white transition-colors">
               About
