@@ -99,20 +99,20 @@ const CartDrawer: React.FC = () => {
                         </div>
                       )}
 
-                      {/* Price and Remove Button - Price moved to the right */}
+                      {/* Price and Remove Button - "X" moved to far right and aligned center */}
                       <div className="flex items-center justify-between mb-3">
-                        {/* Remove Button with "X" icon */}
-                        <button
-                          onClick={() => removeItem(item.variantId)}
-                          className="p-1 hover:bg-gray-100 rounded transition-colors text-gray-400 hover:text-red-500"
-                        >
-                          <i className="ri-close-line text-lg font-bold"></i>
-                        </button>
-                        
                         {/* Price - without currency display */}
                         <span className="font-semibold text-gray-900">
                           ${parseFloat(item.price.amount).toFixed(2)}
                         </span>
+                        
+                        {/* Remove Button with "X" icon - moved to far right and aligned center */}
+                        <button
+                          onClick={() => removeItem(item.variantId)}
+                          className="p-1 hover:bg-gray-100 rounded transition-colors text-gray-400 hover:text-red-500 self-center"
+                        >
+                          <i className="ri-close-line text-lg font-bold"></i>
+                        </button>
                       </div>
 
                       {/* Quantity Controls - smaller size */}
