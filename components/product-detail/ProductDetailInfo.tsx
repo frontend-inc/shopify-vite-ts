@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product, ProductVariant } from './index';
+import { Product, ProductVariant } from './index.tsx';
 
 interface ProductDetailInfoProps {
   product: Product;
@@ -9,7 +9,6 @@ interface ProductDetailInfoProps {
   setQuantity: (quantity: number) => void;
   handleAddToCart: () => void;
   onOptionChange: (optionName: string, value: string) => void;
-  setSelectedVariant: (variant: ProductVariant) => void;
 }
 
 const ProductDetailInfo: React.FC<ProductDetailInfoProps> = ({
