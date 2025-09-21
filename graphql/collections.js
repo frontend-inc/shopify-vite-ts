@@ -22,9 +22,9 @@ const GET_COLLECTIONS_QUERY = `
 
 // GraphQL query for getting products from a collection
 const GET_COLLECTION_PRODUCTS_QUERY = `
-  query getCollectionProducts($handle: String!, $first: Int!, $sortKey: ProductCollectionSortKeys!, $reverse: Boolean, $query: String) {
+  query getCollectionProducts($handle: String!, $first: Int!, $sortKey: ProductCollectionSortKeys!, $reverse: Boolean) {
     collection(handle: $handle) {
-      products(first: $first, sortKey: $sortKey, reverse: $reverse, query: $query) {
+      products(first: $first, sortKey: $sortKey, reverse: $reverse) {
         edges {
           node {
             id
@@ -98,12 +98,11 @@ async function getCollectionProducts({
   collection,
   limit = 20,
   sortKey = 'COLLECTION_DEFAULT',
-  query: searchQuery,
   reverse = false,
 }) {
   const response = await shopifyFetch({
     query: GET_COLLECTION_PRODUCTS_QUERY,
-    variables: { handle: collection, first: limit, sortKey, query: searchQuery, reverse },
+    variables: { handle: collection, first: limit, sortKey, reverse },
   });
 
   const { data } = response;

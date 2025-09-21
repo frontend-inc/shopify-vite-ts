@@ -57,11 +57,21 @@ const CollectionDetail: React.FC = () => {
       try {
         setLoading(true);
         setError(null);
-        const productData = await getCollectionProducts({ collection: handle, limit: 20 });
+        
+        // Set title based on handle before fetching products
+        const formattedTitle = handle
+          .replace(/-/g, ' ')
+          .replace(/\b\w/g, l => l.toUpperCase());
+        setCollectionTitle(formattedTitle);
+        
+        const productData = await getCollectionProducts({ 
+          collection: handle, 
+          limit: 20,
+          sortKey: 'COLLECTION_DEFAULT',
+          reverse: false
+        });
+        
         setProducts(productData);
-        // For now, we derive the title from the first product's collection info
-        // In a real implementation, you would fetch the collection details separately
-        setCollectionTitle(handle.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()));
       } catch (err) {
         console.error('Error fetching collection products:', err);
         setError(err instanceof Error ? err.message : 'Failed to load collection products');
