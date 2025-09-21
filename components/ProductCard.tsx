@@ -121,7 +121,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
       {/* Product Info */}
       <div className="p-6">
         <h3 
-          className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2 min-h-[3.5rem]" 
+          className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2 min-h-[3.5rem]"
           style={{ fontFamily: 'Space Grotesk, sans-serif' }}
         >
           {product.title}

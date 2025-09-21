@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getProductRecommendations } from '../../services/shopify/api.js';
-import ProductCard from '../product-card';
+import ProductCard from '../ProductCard';
 
 interface ProductRecommendationsProps {
   productId: string;

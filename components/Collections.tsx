@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getCollections } from '../services/shopify/api.js';
-import CollectionCard from './collection-card';
+import CollectionCard from './CollectionCard';
 
 interface CollectionImage {
   url: string;
@@ -44,7 +44,7 @@ const Collections: React.FC = () => {
       <div className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 
-            className="text-5xl font-bold text-center mb-16 text-gray-900" 
+            className="text-5xl font-bold text-center mb-16 text-gray-900"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
             Our Collections
@@ -73,7 +73,7 @@ const Collections: React.FC = () => {
       <div className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
           <h2 
-            className="text-5xl font-bold mb-8" 
+            className="text-5xl font-bold mb-8"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
             Our Collections
@@ -104,7 +104,7 @@ const Collections: React.FC = () => {
       <div className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
           <h2 
-            className="text-5xl font-bold mb-8" 
+            className="text-5xl font-bold mb-8"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
             Our Collections
@@ -128,7 +128,7 @@ const Collections: React.FC = () => {
     <div className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 
-          className="text-5xl font-bold text-center mb-16 text-gray-900" 
+          className="text-5xl font-bold text-center mb-16 text-gray-900"
           style={{ fontFamily: 'Space Grotesk, sans-serif' }}
         >
           Our Collections

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ProductCard from './product-card';
+import ProductCard from './ProductCard';
 import { getProducts } from '../services/shopify/api.js';
 
 interface ProductImage {
@@ -117,7 +117,7 @@ const Products: React.FC<ProductsProps> = ({
       <div className="py-16">
         <div className="container mx-auto px-4">
           <h2 
-            className="text-4xl font-bold text-center mb-12" 
+            className="text-4xl font-bold text-center mb-12"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
             {title}
@@ -147,7 +147,7 @@ const Products: React.FC<ProductsProps> = ({
       <div className="py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 
-            className="text-4xl font-bold mb-8" 
+            className="text-4xl font-bold mb-8"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
             {title}
@@ -178,7 +178,7 @@ const Products: React.FC<ProductsProps> = ({
       <div className="py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 
-            className="text-4xl font-bold mb-8" 
+            className="text-4xl font-bold mb-8"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
             {title}
@@ -202,7 +202,7 @@ const Products: React.FC<ProductsProps> = ({
     <div className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 
-          className="text-5xl font-bold text-center mb-16 text-gray-900" 
+          className="text-5xl font-bold text-center mb-16 text-gray-900"
           style={{ fontFamily: 'Space Grotesk, sans-serif' }}
         >
           {title}

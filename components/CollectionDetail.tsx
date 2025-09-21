@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCollectionProducts } from '../services/shopify/api.js';
-import ProductCard from './product-card';
+import ProductCard from './ProductCard';
 
 interface ProductImage {
   url: string;
@@ -88,7 +88,7 @@ const CollectionDetail: React.FC = () => {
       <div className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 
-            className="text-5xl font-bold text-center mb-16 text-gray-900" 
+            className="text-5xl font-bold text-center mb-16 text-gray-900"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
             Collection
@@ -118,7 +118,7 @@ const CollectionDetail: React.FC = () => {
       <div className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
           <h2 
-            className="text-5xl font-bold mb-8" 
+            className="text-5xl font-bold mb-8"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
             Collection
@@ -148,7 +148,7 @@ const CollectionDetail: React.FC = () => {
     <div className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 
-          className="text-5xl font-bold text-center mb-16 text-gray-900" 
+          className="text-5xl font-bold text-center mb-16 text-gray-900"
           style={{ fontFamily: 'Space Grotesk, sans-serif' }}
         >
           {collectionTitle}
