@@ -104,9 +104,6 @@ const Products: React.FC<ProductsProps> = ({
   const handleAddToCart = async (product: Product) => {
     // Here you would typically integrate with cart functionality
     console.log('Adding to cart:', product);
-    
-    // For now, just show an alert
-    alert(`Added "${product.title}" to cart!`);
   };
 
   const handleLoadMore = () => {
