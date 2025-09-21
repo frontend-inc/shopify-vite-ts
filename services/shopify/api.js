@@ -27,6 +27,7 @@ export {
   updateCartLines,
   removeCartLines,
   getCart,
+  redirectToCheckout,
   CREATE_CART_MUTATION,
   ADD_CART_LINES_MUTATION,
   UPDATE_CART_LINES_MUTATION,

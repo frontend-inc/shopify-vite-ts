@@ -345,12 +345,23 @@ async function getCart(cartId) {
   return data.cart;
 }
 
+// Redirect to checkout
+function redirectToCheckout(checkoutUrl) {
+  if (!checkoutUrl) {
+    throw new Error('Checkout URL is missing');
+  }
+  
+  // Navigate to the checkout URL
+  window.location.href = checkoutUrl;
+}
+
 export {
   createCart,
   addCartLines,
   updateCartLines,
   removeCartLines,
   getCart,
+  redirectToCheckout,
   CREATE_CART_MUTATION,
   ADD_CART_LINES_MUTATION,
   UPDATE_CART_LINES_MUTATION,

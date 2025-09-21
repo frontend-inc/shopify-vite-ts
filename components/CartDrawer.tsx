@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../contexts/CartContext';
+import { createCart, addCartLines, redirectToCheckout } from '../services/shopify/api.js';
 
 const CartDrawer: React.FC = () => {
   const { state, removeItem, updateQuantity, closeCart, clearCart } = useCart();
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
 
   const formatPrice = (amount: string, currencyCode: string) => {
     return new Intl.NumberFormat('en-US', {
@@ -11,9 +13,32 @@ const CartDrawer: React.FC = () => {
     }).format(parseFloat(amount));
   };
 
-  const handleCheckout = () => {
-    // This would typically redirect to Shopify checkout
-    alert('Redirecting to checkout... (not implemented yet)');
+  const handleCheckout = async () => {
+    setIsCheckingOut(true);
+    
+    try {
+      // Create a new cart
+      const cart = await createCart();
+      
+      // Add items to the cart
+      const lines = state.items.map(item => ({
+        merchandiseId: item.variantId,
+        quantity: item.quantity
+      }));
+      
+      if (lines.length > 0) {
+        const updatedCart = await addCartLines(cart.id, lines);
+        // Redirect to Shopify checkout
+        redirectToCheckout(updatedCart.checkoutUrl);
+      } else {
+        // If cart is empty, just create an empty cart and redirect
+        redirectToCheckout(cart.checkoutUrl);
+      }
+    } catch (error) {
+      console.error('Error during checkout:', error);
+      alert('Failed to proceed to checkout. Please try again.');
+      setIsCheckingOut(false);
+    }
   };
 
   if (!state.isOpen) return null;
@@ -163,10 +188,22 @@ const CartDrawer: React.FC = () => {
               <div className="space-y-3">
                 <button
                   onClick={handleCheckout}
-                  className="w-full bg-black text-white py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+                  disabled={isCheckingOut}
+                  className={`w-full py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors ${
+                    isCheckingOut 
+                      ? 'bg-gray-500 text-gray-300 cursor-not-allowed' 
+                      : 'bg-black text-white'
+                  }`}
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                 >
-                  Checkout
+                  {isCheckingOut ? (
+                    <span className="flex items-center justify-center space-x-2">
+                      <i className="ri-loader-4-line animate-spin"></i>
+                      <span>Processing...</span>
+                    </span>
+                  ) : (
+                    'Checkout'
+                  )}
                 </button>
                 
                 <div className="flex space-x-3">
