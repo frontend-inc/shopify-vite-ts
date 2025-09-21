@@ -26,7 +26,6 @@ const CREATE_CART_MUTATION = `
                         node {
                           url
                           altText
-                          thumbhash
                         }
                       }
                     }
@@ -78,7 +77,6 @@ const ADD_CART_LINES_MUTATION = `
                         node {
                           url
                           altText
-                          thumbhash
                         }
                       }
                     }
@@ -130,7 +128,6 @@ const UPDATE_CART_LINES_MUTATION = `
                         node {
                           url
                           altText
-                          thumbhash
                         }
                       }
                     }
@@ -182,7 +179,6 @@ const REMOVE_CART_LINES_MUTATION = `
                         node {
                           url
                           altText
-                          thumbhash
                         }
                       }
                     }
@@ -238,7 +234,6 @@ const GET_CART_QUERY = `
                       node {
                         url
                         altText
-                        thumbhash
                       }
                     }
                   }

@@ -12,10 +12,6 @@ const GET_PRODUCTS_QUERY = `
           descriptionHtml
           handle
           productType
-          category {
-            id
-            name
-          }
           options {
             id
             name
@@ -26,7 +22,6 @@ const GET_PRODUCTS_QUERY = `
               node {
                 url
                 altText
-                thumbhash
               }
             }
           }
@@ -75,10 +70,6 @@ const GET_PRODUCT_QUERY = `
       descriptionHtml
       handle
       productType
-      category {
-        id
-        name
-      }
       options {
         id
         name
@@ -89,7 +80,6 @@ const GET_PRODUCT_QUERY = `
           node {
             url
             altText
-            thumbhash
           }
         }
       }
@@ -127,7 +117,7 @@ const GET_PRODUCT_QUERY = `
 `;
 
 // Get all products
-async function getProducts({ first = 20, sortKey = 'COLLECTIONS', reverse = false, query: searchQuery }) {
+async function getProducts({ first = 20, sortKey = 'CREATED_AT', reverse = false, query: searchQuery }) {
   const response = await shopifyFetch({
     query: GET_PRODUCTS_QUERY,
     variables: { first, sortKey, reverse, query: searchQuery },

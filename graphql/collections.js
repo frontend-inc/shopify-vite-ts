@@ -13,7 +13,6 @@ const GET_COLLECTIONS_QUERY = `
           image {
             url
             altText
-            thumbhash
           }
         }
       }
@@ -34,10 +33,6 @@ const GET_COLLECTION_PRODUCTS_QUERY = `
             descriptionHtml
             handle
             productType
-            category {
-              id
-              name
-            }
             options {
               id
               name
@@ -48,7 +43,6 @@ const GET_COLLECTION_PRODUCTS_QUERY = `
                 node {
                   url
                   altText
-                  thumbhash
                 }
               }
             }
@@ -103,7 +97,7 @@ async function getCollections(first = 10) {
 async function getCollectionProducts({
   collection,
   limit = 20,
-  sortKey = 'COLLECTION',
+  sortKey = 'COLLECTION_DEFAULT',
   query: searchQuery,
   reverse = false,
 }) {
